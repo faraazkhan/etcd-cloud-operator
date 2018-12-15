@@ -1,8 +1,0 @@
-[environments]
-  [environments.development]
-    name = "etcd-cloud-operator"
-    namespace = "default"
-    wait = true
-    watch = true
-    watch-delay = 10
-    auto-connect = false

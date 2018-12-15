@@ -27,7 +27,7 @@ spec:
           name: {{ include "etcd-cloud-operator.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
           - name: config
@@ -37,7 +37,7 @@ spec:
           - name: INITIAL_CLUSTER_SIZE
             value: {{ default 3 .Values.replicaCount | quote }}
           - name: STATEFULSET_NAME
-            value: {{ include "etcd-cloud-operator.name" . }}
+            value: {{ include "etcd-cloud-operator.fullname" . }}
           - name: POD_IP
             valueFrom:
               fieldRef:
