@@ -1,0 +1,11 @@
+---
+replicaCount: 3
+
+image:
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}

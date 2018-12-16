@@ -31,10 +31,10 @@ eco:
     backend-quota: 2147483648
   # Configuration of the auto-scaling group provider.
   asg:
-    provider: aws
+    provider: sts
   # Configuration of the snapshot provider.
   snapshot:
-    provider: s3
+    provider: file
     # The interval between each snapshot.
     interval: 30m
     # The time after which a backup has to be deleted.
