@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  serviceName: {{ include "etcd-cloud-operator.name"  . }}
+  serviceName: {{ include "etcd-cloud-operator.fullname"  . }}
   replicas: {{ default 3 .Values.replicaCount }}
   selector:
     matchLabels:
@@ -36,6 +36,8 @@ spec:
           env:
           - name: INITIAL_CLUSTER_SIZE
             value: {{ default 3 .Values.replicaCount | quote }}
+          - name: STATEFULSET_SERVICE_NAME
+            value: {{ include "etcd-cloud-operator.fullname" . }}
           - name: STATEFULSET_NAME
             value: {{ include "etcd-cloud-operator.fullname" . }}
           - name: POD_IP

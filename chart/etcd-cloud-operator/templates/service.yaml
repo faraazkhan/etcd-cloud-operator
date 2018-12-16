@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   clusterIP: None
-  type: {{ .Values.service.type }}
+  type: ClusterIP
   ports:
     - port: 2380
       targetPort: peer
