@@ -3,18 +3,24 @@ FROM golang:1.11.2-alpine AS build-env
 WORKDIR /go/src/github.com/quentin-m/etcd-cloud-operator
 
 # Install & Cache dependencies
-RUN apk add --no-cache git curl
+RUN apk add --no-cache git curl gcc musl-dev
 
 RUN apk add --update openssl && \
     wget https://github.com/coreos/etcd/releases/download/v3.3.3/etcd-v3.3.3-linux-amd64.tar.gz -O /tmp/etcd.tar.gz && \
     mkdir /etcd && \
     tar xzvf /tmp/etcd.tar.gz -C /etcd --strip-components=1 && \
-    rm /tmp/etcd.tar.gz && \
-    go get -u github.com/golang/dep/...
+    rm /tmp/etcd.tar.gz
 
-# Install ECO
+# Force the go compiler to use modules
+ENV GO111MODULE=on
+
+# We want to populate the module cache based on the go.{mod,sum} files.
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+
+FROM build-env as builder
 COPY . .
-RUN dep ensure
 RUN go install github.com/quentin-m/etcd-cloud-operator/cmd/operator
 RUN go install github.com/quentin-m/etcd-cloud-operator/cmd/tester
 
@@ -22,9 +28,9 @@ RUN go install github.com/quentin-m/etcd-cloud-operator/cmd/tester
 FROM alpine
 
 RUN apk add --no-cache ca-certificates
-COPY --from=build-env /go/bin/operator /operator
-COPY --from=build-env /go/bin/tester /tester
-COPY --from=build-env /etcd/etcdctl /usr/local/bin/etcdctl
+COPY --from=builder /go/bin/operator /operator
+COPY --from=builder /go/bin/tester /tester
+COPY --from=builder /etcd/etcdctl /usr/local/bin/etcdctl
 
 
 ENTRYPOINT ["/operator"]

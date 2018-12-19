@@ -1,0 +1,46 @@
+module github.com/quentin-m/etcd-cloud-operator
+
+require (
+	github.com/aws/aws-sdk-go v1.13.60
+	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
+	github.com/coreos/bbolt v1.3.1-etcd.8
+	github.com/coreos/etcd v3.3.10+incompatible
+	github.com/coreos/go-semver v0.2.0
+	github.com/coreos/go-systemd v0.0.0-20181031085051-9002847aa142
+	github.com/coreos/pkg v0.0.0-20160727233714-3ac0863d7acf
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/ghodss/yaml v1.0.0
+	github.com/go-ini/ini v1.39.3
+	github.com/gogo/protobuf v1.2.0
+	github.com/golang/protobuf v1.2.0
+	github.com/google/btree v0.0.0-20180813153112-4030bb1f1f0c
+	github.com/gorilla/websocket v1.4.0
+	github.com/grpc-ecosystem/go-grpc-middleware v1.0.0
+	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
+	github.com/grpc-ecosystem/grpc-gateway v1.6.2
+	github.com/jmespath/go-jmespath v0.0.0-20160202185014-0b12d6b521d8
+	github.com/jonboulle/clockwork v0.1.0
+	github.com/matttproud/golang_protobuf_extensions v1.0.1
+	github.com/petar/GoLLRB v0.0.0-20130427215148-53be0d36a84c
+	github.com/prometheus/client_golang v0.9.2
+	github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910
+	github.com/prometheus/common v0.0.0-20181126121408-4724e9255275
+	github.com/prometheus/procfs v0.0.0-20181204211112-1dc9a6cbc91a
+	github.com/sirupsen/logrus v1.0.6
+	github.com/soheilhy/cmux v0.1.4
+	github.com/tmc/grpc-websocket-proxy v0.0.0-20171017195756-830351dc03c6
+	github.com/ugorji/go v1.1.1
+	github.com/xiang90/probing v0.0.0-20160813154853-07dd2e8dfe18
+	go.etcd.io/bbolt v1.3.1-etcd.8
+	go.uber.org/atomic v1.3.2
+	go.uber.org/multierr v1.1.0
+	go.uber.org/zap v1.9.1
+	golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9
+	golang.org/x/net v0.0.0-20181213202711-891ebc4b82d6
+	golang.org/x/sys v0.0.0-20181213200352-4d1cda033e06
+	golang.org/x/text v0.3.0
+	golang.org/x/time v0.0.0-20181108054448-85acf8d2951c
+	google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+	google.golang.org/grpc v1.17.0
+	gopkg.in/yaml.v2 v2.2.2
+)
